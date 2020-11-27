@@ -1,11 +1,13 @@
 import { Component } from "@k8slens/extensions";
+import { observer } from "mobx-react";
 import React from "react";
 
-export class ExamplePreferenceInput extends React.Component<{preference: {enabled: boolean}}, {}> {
-  constructor(props: any) {
-    super(props);
-    this.state = {enabled: props.preference.enabled};
-  }
+export type ExamplePreference  = {
+  enabled: boolean;
+}
+
+@observer
+export class ExamplePreferenceInput extends React.Component<{preference: ExamplePreference}, {}> {
 
   render() {
     const { preference } = this.props;
@@ -13,7 +15,7 @@ export class ExamplePreferenceInput extends React.Component<{preference: {enable
       <Component.Checkbox
         label="I understand appPreferences"
         value={preference.enabled}
-        onChange={v => { preference.enabled = v; this.setState({enabled: v}); }}
+        onChange={v => { preference.enabled = v; }}
       />
     );
   }

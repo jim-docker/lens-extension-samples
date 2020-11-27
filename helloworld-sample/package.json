@@ -26,6 +26,7 @@
     "clean": "rm -rf ./dist"
   },
   "dependencies": {
+    "mobx": "^5.15.5",
     "react-open-doodles": "^1.0.5"
   },
   "devDependencies": {
@@ -34,6 +35,9 @@
     "typescript": "^4.0.3",
     "@types/react": "^16.9.35",
     "@types/node": "^12.0.0",
+    "mobx-react": "^6.2.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.13.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.11"
   },

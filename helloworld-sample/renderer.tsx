@@ -3,10 +3,9 @@ import { ExampleIcon, ExamplePage, HelpPage, HelpIcon } from "./src/example-page
 import { ExempleIcon, ExemplePage } from "./src/exemple-page"
 import { ExamplePodDetails } from "./src/example-pod-details"
 import { ExampleFeature } from "./src/example-feature"
-import { ExamplePreferenceHint, ExamplePreferenceInput } from "./src/example-preference";
+import { ExamplePreference, ExamplePreferenceHint, ExamplePreferenceInput } from "./src/example-preference";
+import { observable } from "mobx";
 import React from "react"
-
-const preference: { enabled: boolean } = { enabled: false };
 
 export default class ExampleExtension extends LensRendererExtension {
   clusterPages = [
@@ -96,11 +95,13 @@ export default class ExampleExtension extends LensRendererExtension {
     }
   ];
 
+  @observable preference: ExamplePreference = { enabled: false };
+
   appPreferences = [
     {
       title: "Example Preferences",
       components: {
-        Input: () => <ExamplePreferenceInput preference={preference}/>,
+        Input: () => <ExamplePreferenceInput preference={this.preference}/>,
         Hint: () => <ExamplePreferenceHint/>
       }
     }
