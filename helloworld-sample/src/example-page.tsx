@@ -21,3 +21,18 @@ export class ExamplePage extends React.Component<{ extension: LensRendererExtens
     )
   }
 }
+
+export function HelpIcon(props: Component.IconProps) {
+  return <Component.Icon {...props} material="help"/>
+}
+
+export class HelpPage extends React.Component<{ extension: LensRendererExtension }> {
+  render() {
+    return (
+      <div>
+        <p>Help yourself</p>
+      </div>
+    )
+  }
+}
+
