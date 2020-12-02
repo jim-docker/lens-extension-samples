@@ -1,9 +1,10 @@
 import { LensRendererExtension, Component, K8sApi } from "@k8slens/extensions";
 import { ExampleIcon, ExamplePage, HelpPage, HelpIcon } from "./src/example-page"
 import { ExempleIcon, ExemplePage } from "./src/exemple-page"
-import { ExamplePodDetails } from "./src/example-pod-details"
+import { ExampleNamespaceDetails } from "./src/example-namespace-details"
 import { ExampleFeature } from "./src/example-feature"
 import { ExamplePreference, ExamplePreferenceHint, ExamplePreferenceInput } from "./src/example-preference";
+import { NamespaceMenuItem, NamespaceMenuItemProps } from "./src/namespace-menu-item"
 import { observable } from "mobx";
 import React from "react"
 
@@ -68,16 +69,19 @@ export default class ExampleExtension extends LensRendererExtension {
     },
   ];
 
-  kubeObjectDetailItems = [
+  statusBarItems = [
     {
-      kind: "Pod",
-      apiVersions: ["v1"],
-      priority: 10,
-      components: {
-        Details: (props: Component.KubeObjectDetailsProps<K8sApi.Pod>) => <ExamplePodDetails {...props} />
-      }
-    }
-  ]
+      item: (
+        <div
+          className="flex align-center gaps hover-highlight"
+          onClick={() => this.navigate("help")}
+        >
+          <HelpIcon />
+          My Status Bar Item
+        </div>
+      ),
+    },
+  ];
 
   clusterFeatures = [
     {
@@ -107,6 +111,27 @@ export default class ExampleExtension extends LensRendererExtension {
     }
   ];
   
+  kubeObjectMenuItems = [
+    {
+      kind: "Namespace",
+      apiVersions: ["v1"],
+      components: {
+        MenuItem: (props: NamespaceMenuItemProps) => <NamespaceMenuItem {...props} />
+      }
+    }
+  ];
+
+  kubeObjectDetailItems = [
+    {
+      kind: "Namespace",
+      apiVersions: ["v1"],
+      priority: 10,
+      components: {
+        Details: (props: Component.KubeObjectDetailsProps<K8sApi.Namespace>) => <ExampleNamespaceDetails {...props} />
+      }
+    }
+  ];
+
   async onActivate() {
     console.log("hello world")
   }
