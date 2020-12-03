@@ -1,10 +1,7 @@
 import React from "react";
 import { Component, K8sApi, Navigation} from "@k8slens/extensions";
 
-export interface NamespaceMenuItemProps extends Component.KubeObjectMenuProps<K8sApi.Namespace> {
-}
-
-export function NamespaceMenuItem(props: NamespaceMenuItemProps) {
+export function NamespaceMenuItem(props: Component.KubeObjectMenuProps<K8sApi.Namespace>) {
   const { object: namespace, toolbar } = props;
   if (!namespace) return null;
 
@@ -24,7 +21,7 @@ export function NamespaceMenuItem(props: NamespaceMenuItemProps) {
 
   return (
     <Component.MenuItem onClick={getPods}>
-    <Component.Icon svg="ssh" interactive={toolbar} title="Get pods in terminal"/>
+    <Component.Icon material="speaker_group" interactive={toolbar} title="Get pods in terminal"/>
     <span className="title">Get Pods</span>
     </Component.MenuItem>
   );

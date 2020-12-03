@@ -1,10 +1,10 @@
 import { LensRendererExtension, Component, K8sApi } from "@k8slens/extensions";
 import { ExampleIcon, ExamplePage, HelpPage, HelpIcon } from "./src/example-page"
 import { ExempleIcon, ExemplePage } from "./src/exemple-page"
-import { ExampleNamespaceDetails } from "./src/example-namespace-details"
 import { ExampleFeature } from "./src/example-feature"
 import { ExamplePreference, ExamplePreferenceHint, ExamplePreferenceInput } from "./src/example-preference";
-import { NamespaceMenuItem, NamespaceMenuItemProps } from "./src/namespace-menu-item"
+import { NamespaceMenuItem } from "./src/namespace-menu-item"
+import { NamespaceDetailsItem } from "./src/namespace-details-item"
 import { observable } from "mobx";
 import React from "react"
 
@@ -116,7 +116,7 @@ export default class ExampleExtension extends LensRendererExtension {
       kind: "Namespace",
       apiVersions: ["v1"],
       components: {
-        MenuItem: (props: NamespaceMenuItemProps) => <NamespaceMenuItem {...props} />
+        MenuItem: (props: Component.KubeObjectMenuProps<K8sApi.Namespace>) => <NamespaceMenuItem {...props} />
       }
     }
   ];
@@ -127,7 +127,7 @@ export default class ExampleExtension extends LensRendererExtension {
       apiVersions: ["v1"],
       priority: 10,
       components: {
-        Details: (props: Component.KubeObjectDetailsProps<K8sApi.Namespace>) => <ExampleNamespaceDetails {...props} />
+        Details: (props: Component.KubeObjectDetailsProps<K8sApi.Namespace>) => <NamespaceDetailsItem {...props} />
       }
     }
   ];
