@@ -2,12 +2,14 @@ import { Component } from "@k8slens/extensions";
 import { observer } from "mobx-react";
 import React from "react";
 
-export type ExamplePreference  = {
-  enabled: boolean;
+export class ExamplePreferenceProps {
+  preference: {
+    enabled: boolean;
+  }
 }
 
 @observer
-export class ExamplePreferenceInput extends React.Component<{preference: ExamplePreference}, {}> {
+export class ExamplePreferenceInput extends React.Component<ExamplePreferenceProps> {
 
   render() {
     const { preference } = this.props;

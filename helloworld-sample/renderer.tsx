@@ -2,7 +2,7 @@ import { LensRendererExtension, Component, K8sApi } from "@k8slens/extensions";
 import { ExampleIcon, ExamplePage, HelpPage, HelpIcon } from "./src/example-page"
 import { ExempleIcon, ExemplePage } from "./src/exemple-page"
 import { ExampleFeature } from "./src/example-feature"
-import { ExamplePreference, ExamplePreferenceHint, ExamplePreferenceInput } from "./src/example-preference";
+import { ExamplePreferenceHint, ExamplePreferenceInput } from "./src/example-preference";
 import { NamespaceMenuItem } from "./src/namespace-menu-item"
 import { NamespaceDetailsItem } from "./src/namespace-details-item"
 import { observable } from "mobx";
@@ -99,7 +99,7 @@ export default class ExampleExtension extends LensRendererExtension {
     }
   ];
 
-  @observable preference: ExamplePreference = { enabled: false };
+  @observable preference = { enabled: false };
 
   appPreferences = [
     {
