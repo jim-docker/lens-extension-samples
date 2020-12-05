@@ -3,9 +3,9 @@ import { ExampleIcon, ExamplePage, HelpPage, HelpIcon } from "./src/example-page
 import { ExempleIcon, ExemplePage } from "./src/exemple-page"
 import { ExampleFeature } from "./src/example-feature"
 import { ExamplePreferenceHint, ExamplePreferenceInput } from "./src/example-preference";
+import { examplePreferencesStore } from "./src/example-preference-store";
 import { NamespaceMenuItem } from "./src/namespace-menu-item"
 import { NamespaceDetailsItem } from "./src/namespace-details-item"
-import { observable } from "mobx";
 import React from "react"
 
 export default class ExampleExtension extends LensRendererExtension {
@@ -99,13 +99,11 @@ export default class ExampleExtension extends LensRendererExtension {
     }
   ];
 
-  @observable preference = { enabled: false };
-
   appPreferences = [
     {
       title: "Example Preferences",
       components: {
-        Input: () => <ExamplePreferenceInput preference={this.preference}/>,
+        Input: () => <ExamplePreferenceInput preference={examplePreferencesStore}/>,
         Hint: () => <ExamplePreferenceHint/>
       }
     }
@@ -133,6 +131,9 @@ export default class ExampleExtension extends LensRendererExtension {
   ];
 
   async onActivate() {
-    console.log("hello world")
+    console.log("hello world");
+
+    // load the extension's store to start with the saved state
+    await examplePreferencesStore.loadExtension(this);
   }
 }

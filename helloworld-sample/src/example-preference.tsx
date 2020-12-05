@@ -1,11 +1,10 @@
 import { Component } from "@k8slens/extensions";
 import { observer } from "mobx-react";
 import React from "react";
+import { ExamplePreferencesStore } from "./example-preference-store";
 
 export class ExamplePreferenceProps {
-  preference: {
-    enabled: boolean;
-  }
+  preference: ExamplePreferencesStore;
 }
 
 @observer
@@ -13,6 +12,7 @@ export class ExamplePreferenceInput extends React.Component<ExamplePreferencePro
 
   render() {
     const { preference } = this.props;
+    
     return (
       <Component.Checkbox
         label="I understand appPreferences"

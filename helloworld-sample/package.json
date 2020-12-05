@@ -27,17 +27,18 @@
   },
   "dependencies": {
     "mobx": "^5.15.5",
-    "react-open-doodles": "^1.0.5"
+    "react-open-doodles": "^1.0.5",
+    "conf": "^7.0.1"
   },
   "devDependencies": {
-    "@k8slens/extensions": "^4.0.0-beta.3",
-    "ts-loader": "^8.0.4",
-    "typescript": "^4.0.3",
-    "@types/react": "^16.9.35",
+    "@k8slens/extensions": "^4.0.0-rc.3",
     "@types/node": "^12.0.0",
+    "@types/react": "^16.9.35",
     "mobx-react": "^6.2.2",
     "react": "^16.14.0",
     "react-dom": "^16.13.1",
+    "ts-loader": "^8.0.4",
+    "typescript": "^4.0.3",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.11"
   },
