@@ -1,8 +1,8 @@
 import React from "react";
-import { Component, K8sApi } from "@k8slens/extensions";
+import { Renderer } from "@k8slens/extensions";
 
 interface Props {
-  pods: K8sApi.Pod[];
+  pods: Renderer.K8sApi.Pod[];
 }
 
 export class PodsDetailsList extends React.Component<Props> {
@@ -10,11 +10,11 @@ export class PodsDetailsList extends React.Component<Props> {
   getTableRow(index: number) {
       const {pods} = this.props;
       return (
-          <Component.TableRow key={index} nowrap>
-              <Component.TableCell className="podName">{pods[index].getName()}</Component.TableCell>
-              <Component.TableCell className="podAge">{pods[index].getAge()}</Component.TableCell>
-              <Component.TableCell className="podStatus">{pods[index].getStatus()}</Component.TableCell>
-          </Component.TableRow>
+          <Renderer.Component.TableRow key={index} nowrap>
+              <Renderer.Component.TableCell className="podName">{pods[index].getName()}</Renderer.Component.TableCell>
+              <Renderer.Component.TableCell className="podAge">{pods[index].getAge()}</Renderer.Component.TableCell>
+              <Renderer.Component.TableCell className="podStatus">{pods[index].getStatus()}</Renderer.Component.TableCell>
+          </Renderer.Component.TableRow>
       )
   }
 
@@ -26,16 +26,16 @@ export class PodsDetailsList extends React.Component<Props> {
 
       return (
           <div >
-              <Component.Table>
-                  <Component.TableHead>
-                      <Component.TableCell className="podName">Name</Component.TableCell>
-                      <Component.TableCell className="podAge">Age</Component.TableCell>
-                      <Component.TableCell className="podStatus">Status</Component.TableCell>
-                  </Component.TableHead>
+              <Renderer.Component.Table>
+                  <Renderer.Component.TableHead>
+                      <Renderer.Component.TableCell className="podName">Name</Renderer.Component.TableCell>
+                      <Renderer.Component.TableCell className="podAge">Age</Renderer.Component.TableCell>
+                      <Renderer.Component.TableCell className="podStatus">Status</Renderer.Component.TableCell>
+                  </Renderer.Component.TableHead>
                   {
                       pods.map((pod, index) => this.getTableRow(index))
                   }
-              </Component.Table>
+              </Renderer.Component.Table>
           </div>
       )
   }

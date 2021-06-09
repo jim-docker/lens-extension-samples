@@ -1,4 +1,4 @@
-import { LensRendererExtension, Component, K8sApi } from "@k8slens/extensions";
+import { Common, Renderer } from "@k8slens/extensions";
 import { ExampleIcon, ExamplePage, HelpPage, HelpIcon } from "./src/example-page"
 import { ExempleIcon, ExemplePage } from "./src/exemple-page"
 import { ExampleFeature } from "./src/example-feature"
@@ -8,7 +8,7 @@ import { NamespaceMenuItem } from "./src/namespace-menu-item"
 import { NamespaceDetailsItem } from "./src/namespace-details-item"
 import React from "react"
 
-export default class ExampleExtension extends LensRendererExtension {
+export default class ExampleExtension extends Renderer.LensExtension {
   clusterPages = [
     {
       id: "hello",
@@ -74,7 +74,7 @@ export default class ExampleExtension extends LensRendererExtension {
       item: (
         <div
           className="flex align-center gaps hover-highlight"
-          onClick={() => this.navigate("help")}
+          onClick={() => Renderer.Navigation.navigate("help")}
         >
           <HelpIcon />
           My Status Bar Item
@@ -114,7 +114,7 @@ export default class ExampleExtension extends LensRendererExtension {
       kind: "Namespace",
       apiVersions: ["v1"],
       components: {
-        MenuItem: (props: Component.KubeObjectMenuProps<K8sApi.Namespace>) => <NamespaceMenuItem {...props} />
+        MenuItem: (props: Renderer.Component.KubeObjectMenuProps<Renderer.K8sApi.Namespace>) => <NamespaceMenuItem {...props} />
       }
     }
   ];
@@ -125,7 +125,7 @@ export default class ExampleExtension extends LensRendererExtension {
       apiVersions: ["v1"],
       priority: 10,
       components: {
-        Details: (props: Component.KubeObjectDetailsProps<K8sApi.Namespace>) => <NamespaceDetailsItem {...props} />
+        Details: (props: Renderer.Component.KubeObjectDetailsProps<Renderer.K8sApi.Namespace>) => <NamespaceDetailsItem {...props} />
       }
     }
   ];

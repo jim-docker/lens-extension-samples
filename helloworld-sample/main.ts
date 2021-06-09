@@ -1,7 +1,7 @@
-import { LensMainExtension } from "@k8slens/extensions";
+import { Main } from "@k8slens/extensions";
 import { examplePreferencesStore } from "./src/example-preference-store";
 
-export default class ExampleMainExtension extends LensMainExtension {
+export default class ExampleMainExtension extends Main.LensExtension {
   async onActivate() {
     console.log('helloworld-sample activated');
 

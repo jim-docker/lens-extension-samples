@@ -1,20 +1,20 @@
-import { ClusterFeature, Store, K8sApi } from "@k8slens/extensions";
+import { Common, Renderer } from "@k8slens/extensions";
 import * as path from "path";
 
 export class ExampleFeature extends ClusterFeature.Feature {
 
-  async install(cluster: Store.Cluster): Promise<void> {
+  async install(cluster: Common.Catalog.KubernetesCluster): Promise<void> {
 
     super.applyResources(cluster, path.join(__dirname, "../resources/"));
   }
 
-  async upgrade(cluster: Store.Cluster): Promise<void> {
+  async upgrade(cluster: Common.Catalog.KubernetesCluster): Promise<void> {
     return this.install(cluster);
   }
 
-  async updateStatus(cluster: Store.Cluster): Promise<ClusterFeature.FeatureStatus> {
+  async updateStatus(cluster: Common.Catalog.KubernetesCluster): Promise<ClusterFeature.FeatureStatus> {
     try {
-      const pod = K8sApi.forCluster(cluster, K8sApi.Pod);
+      const pod = Renderer.K8sApi.forCluster(cluster, Renderer.K8sApi.Pod);
       const examplePod = await pod.get({name: "example-pod", namespace: "default"});
       if (examplePod?.kind) {
         this.status.installed = true;
@@ -33,8 +33,8 @@ export class ExampleFeature extends ClusterFeature.Feature {
     return this.status;
   }
 
-  async uninstall(cluster: Store.Cluster): Promise<void> {
-    const podApi = K8sApi.forCluster(cluster, K8sApi.Pod);
+  async uninstall(cluster: Common.Catalog.KubernetesCluster): Promise<void> {
+    const podApi = Renderer.K8sApi.forCluster(cluster, Renderer.K8sApi.Pod);
     await podApi.delete({name: "example-pod", namespace: "default"});
   }
 }

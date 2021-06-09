@@ -1,4 +1,4 @@
-import { Component } from "@k8slens/extensions";
+import { Renderer } from "@k8slens/extensions";
 import { observer } from "mobx-react";
 import React from "react";
 import { ExamplePreferencesStore } from "./example-preference-store";
@@ -14,7 +14,7 @@ export class ExamplePreferenceInput extends React.Component<ExamplePreferencePro
     const { preference } = this.props;
     
     return (
-      <Component.Checkbox
+      <Renderer.Component.Checkbox
         label="I understand appPreferences"
         value={preference.enabled}
         onChange={v => { preference.enabled = v; }}

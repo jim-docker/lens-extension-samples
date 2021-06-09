@@ -26,15 +26,15 @@
     "clean": "rm -rf ./dist"
   },
   "dependencies": {
-    "mobx": "^5.15.5",
     "react-open-doodles": "^1.0.5",
     "conf": "^7.0.1"
   },
   "devDependencies": {
-    "@k8slens/extensions": "^4.0.0-rc.3",
+    "@k8slens/extensions": "^5.0.0-git.60a19143b4.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.35",
-    "mobx-react": "^6.2.2",
+    "mobx": "^6.3.0",
+    "mobx-react": "^7.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.13.1",
     "ts-loader": "^8.0.4",
