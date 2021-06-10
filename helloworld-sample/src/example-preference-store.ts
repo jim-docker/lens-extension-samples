@@ -30,8 +30,6 @@ export class ExamplePreferencesStore extends Common.Store.ExtensionStore<Example
   toJSON(): ExamplePreferencesModel {
     return toJS({
       enabled: this.enabled
-    }, {
-      recurseEverything: true
     });
   }
 }

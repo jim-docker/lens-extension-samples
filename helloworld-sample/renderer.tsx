@@ -1,7 +1,7 @@
 import { Common, Renderer } from "@k8slens/extensions";
 import { ExampleIcon, ExamplePage, HelpPage, HelpIcon } from "./src/example-page"
 import { ExempleIcon, ExemplePage } from "./src/exemple-page"
-import { ExampleFeature } from "./src/example-feature"
+import { ExampleResourceStackSettings } from "./src/example-resource-stack-settings"
 import { ExamplePreferenceHint, ExamplePreferenceInput } from "./src/example-preference";
 import { examplePreferencesStore } from "./src/example-preference-store";
 import { NamespaceMenuItem } from "./src/namespace-menu-item"
@@ -83,19 +83,19 @@ export default class ExampleExtension extends Renderer.LensExtension {
     },
   ];
 
-  clusterFeatures = [
+  entitySettings = [
     {
-      title: "Example Feature",
+      apiVersions: ["entity.k8slens.dev/v1alpha1"],
+      kind: "KubernetesCluster",
+      title: "Example Resource Stack",
+      priority: 5,
       components: {
-        Description: () => {
+        View: ({ entity = null }: { entity: Common.Catalog.KubernetesCluster}) => {
           return (
-            <span>
-                Enable an example feature.
-            </span>
-          )
+            <ExampleResourceStackSettings cluster={entity} />
+          );
         }
-      },
-      feature: new ExampleFeature()
+      }
     }
   ];
 
