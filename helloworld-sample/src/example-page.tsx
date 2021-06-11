@@ -27,10 +27,15 @@ export function HelpIcon(props: Renderer.Component.IconProps) {
 }
 
 export class HelpPage extends React.Component<{ extension: Renderer.LensExtension }> {
+  private from: string;
+
   render() {
+    const urlParams = new URLSearchParams(location.search);
+    this.from = urlParams.get("from") as string;
+
     return (
-      <div>
-        <p>Help yourself</p>
+      <div className="flex box grow" >
+        <h1 className="box center" ><p>Example Global Page (came from {this.from})</p></h1>
       </div>
     )
   }

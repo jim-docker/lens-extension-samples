@@ -55,17 +55,20 @@ export default class ExampleExtension extends Renderer.LensExtension {
       id: "help",
       components: {
         Page: HelpPage,
+      },
+      params: {
+        from: ""
+      } as {
+        from: string;
       }
     }
   ];
 
-  globalPageMenus = [
+  welcomeMenus = [
     {
-      target: { pageId: "help" },
-      title: "Help",
-      components: {
-        Icon: HelpIcon,
-      }
+      title:  "Example Welcome Menu",
+      icon: "help",
+      click: () => this.navigate("help", { from: "Welcome Page"})
     },
   ];
 
@@ -74,7 +77,7 @@ export default class ExampleExtension extends Renderer.LensExtension {
       item: (
         <div
           className="flex align-center gaps hover-highlight"
-          onClick={() => Renderer.Navigation.navigate("help")}
+          onClick={() => this.navigate("help", { from: "Status Bar"})}
         >
           <HelpIcon />
           My Status Bar Item
